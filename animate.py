@@ -27,7 +27,7 @@ dt = alpha*grid_x.dx
 
 # 2D plots
 plt.ion()
-u_plt = plt.imshow(u, cmap=matplotlib.colors.ListedColormap(['red', 'blue']))
+u_plt = plt.imshow(u, cmap=matplotlib.colors.ListedColormap(['#F87A53', '#36BA98']))
 plt.colorbar()
 plt.draw()
 
