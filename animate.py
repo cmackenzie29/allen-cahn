@@ -8,15 +8,17 @@ import matplotlib.colors
 resolution = 200
 spatial_order = 2
 grid_x = finite.UniformPeriodicGrid(resolution, 20)
+print(grid_x.length)
 grid_y = finite.UniformPeriodicGrid(resolution, 20)
 domain = finite.Domain((grid_x, grid_y))
 x, y = domain.values()
 
+
 epsilon = 0.5
 
 # IC: Random
-# np.random.seed(1)
-# u = np.sign(np.random.rand(domain.shape[0], domain.shape[1])-0.5)
+np.random.seed(1)
+u = np.sign(np.random.rand(domain.shape[0], domain.shape[1])-0.5)
 
 # IC: Circle
 # u = np.zeros(domain.shape)
@@ -26,13 +28,13 @@ epsilon = 0.5
 # u *= 2
 # u -= 1
 
-# IC: Dumbbell
-u = np.zeros(domain.shape)
-for i,ii in enumerate(x[:,0]):
-    for j,jj in enumerate(y[0]):
-        u[i,j] = ((ii-4)**2+(jj-10)**2<=4) or ((ii-16)**2+(jj-10)**2<=4) or ((ii>5 and ii<15) and (jj<=11) and (jj>=9))
-u *= 2
-u -= 1
+# # IC: Dumbbell
+# u = np.zeros(domain.shape)
+# for i,ii in enumerate(x[:,0]):
+#     for j,jj in enumerate(y[0]):
+#         u[i,j] = ((ii-4)**2+(jj-10)**2<=4) or ((ii-16)**2+(jj-10)**2<=4) or ((ii>5 and ii<15) and (jj<=11) and (jj>=9))
+# u *= 2
+# u -= 1
 
 
 # IC: Torus
@@ -70,7 +72,6 @@ while vb_problem.t < 10-1e-5:
     vb_problem.step(dt)
     u_plt.set_data(u.T)
     plt.pause(.01)
-
 
 
 
