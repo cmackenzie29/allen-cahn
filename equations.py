@@ -3,7 +3,7 @@ from scipy import sparse
 import numpy as np
 import finite
 
-# Solve equation ∂_t u - ε^∇^2 u = u - u^3
+# Solve equation ∂_t u - ε^2∇^2 u = u - u^3
 class AllenCahn:
     
     def __init__(self, u, epsilon, spatial_order, domain):
